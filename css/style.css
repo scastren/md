@@ -2,22 +2,25 @@
   box-sizing: border-box;
 }
 
-body {
+html, body {
   margin: 0;
-  height: 100vh;
+  height: 100%;
+}
+
+body {
   display: flex;
   flex-direction: column;  /* toolbar ylhäällä */
   font-family: system-ui, sans-serif;
 }
 
 #toolbar {
-  position: sticky;      /* pysyy aina näkyvissä */
+  position: sticky;      /* pysyy näkyvissä */
   top: 0;
   width: 100%;
   padding: 0.5em;
   border-bottom: 1px solid #ccc;
   background: #f5f5f5;
-  z-index: 10;           /* toolbar päälle muiden elementtien */
+  z-index: 10;
 }
 
 #saveBtn {
@@ -26,14 +29,15 @@ body {
   cursor: pointer;
 }
 
-/* Container for editor + preview (desktop: vierekkäin) */
+/* Container for editor + preview */
 #main {
   display: flex;
-  flex: 1; /* vie jäljellä olevan tilan ruudusta */
+  flex: 1 1 auto;       /* täyttää jäljellä olevan tilan */
+  min-height: 0;        /* pakollinen scrollauksen toimimiseksi flexissä */
 }
 
 textarea {
-  width: 50%;
+  flex: 1 1 50%;
   padding: 1em;
   border: none;
   outline: none;
@@ -41,13 +45,15 @@ textarea {
   font-family: monospace;
   font-size: 14px;
   line-height: 1.4;
+  min-height: 0;
 }
 
 #preview {
-  width: 50%;
+  flex: 1 1 50%;
   padding: 1em;
   overflow-y: auto;
   border-left: 1px solid #ccc;
+  min-height: 0;
 }
 
 /* Responsiivisuus pienille näytöille */
@@ -56,18 +62,17 @@ textarea {
     flex-direction: column; /* päällekkäin */
   }
 
-  textarea,
-  #preview {
+  textarea, #preview {
     width: 100%;
   }
 
   textarea {
-    height: 40vh; /* editori vie 40% korkeudesta */
+    height: 40vh;
   }
 
   #preview {
-    height: 60vh; /* preview vie 60% korkeudesta */
+    height: 60vh;
     border-left: none;
-    border-top: 1px solid #ccc; /* erotus editorista */
+    border-top: 1px solid #ccc;
   }
 }
