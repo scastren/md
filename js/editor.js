@@ -85,7 +85,7 @@ $ echo "Hello World"
 
 [OpenAI](https://openai.com)  
 
-![Example image](https://github.com/scastren/md/blue.png)
+![Example image](https://github.com/scastren/md/blob/main/blue.png)
 
 ---
 
